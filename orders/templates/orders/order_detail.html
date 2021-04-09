@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h3>checkout</h3>
+
+    <p>total price : {{ order.get_total_price }}</p>
+
+    <br>
+    <a href="" class="btn btn-secondary">Pay</a>
+{% endblock %}

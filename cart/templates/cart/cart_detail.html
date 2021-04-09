@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">PRODUCT</th>
+            <th scope="col">PRICE</th>
+            <th scope="col">QUANTITY</th>
+            <th scope="col">TOTAL</th>
+            <th scope="col">REMOVE</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ item.product }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.total_price }}</td>
+                <td><a href="{% url 'cart:remove_product' item.product.id %}">Remove</a></td>
+            </tr>
+
+        {% endfor %}
+
+        <td colspan="4">total</td>
+        <td>{{ cart.get_total_price }}</td>
+        <td>-</td>
+        </tbody>
+    </table><br>
+    <a href="{% url 'orders:order_create' %}" class="btn btn-dark">Checkout</a>
+{% endblock %}

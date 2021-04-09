@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h4>{{ product.name }}</h4>
+    <p>{{ product.price }}</p>
+    <small>{{ product.created }}</small><br>
+    <img src="{{ product.image.url }}" alt="" height="300">
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Add" class="btn btn-dark">
+    </form>
+{% endblock %}
